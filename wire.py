@@ -1,3 +1,51 @@
+# ==========================================================
+# Wired Macro Pad Receiver (USB Serial)
+# ==========================================================
+#
+# Description:
+# This script receives commands from an ESP32-based macro
+# pad over a USB serial connection and performs desktop
+# automation tasks on a Windows computer.
+#
+# Communication:
+# - Interface: USB Serial
+# - Port: COM6
+# - Baud Rate: 115200
+#
+# Button Mapping:
+# 1 -> Take Screenshot
+#      - Captures the current screen
+#      - Saves image with timestamp
+#      - Displays desktop notification
+#
+# 2 -> Split Screen
+#      - Snaps active window to left side
+#      - Selects another window for the right side
+#
+# 3 -> Open Blinkit
+#      - Opens Blinkit checkout page in browser
+#
+# 4 -> Show Desktop
+#      - Executes Win + D shortcut
+#
+# Required Libraries:
+# - pyserial
+# - keyboard
+# - pyautogui
+# - plyer
+#
+# Installation:
+# pip install pyserial keyboard pyautogui plyer
+#
+# Usage:
+# 1. Connect the ESP32 Macro Pad to the computer via USB.
+# 2. Update the COM port if necessary.
+# 3. Run this script.
+# 4. Press buttons on the macro pad.
+# 5. Corresponding actions will be executed on the PC.
+#
+# Developed as part of a custom ESP32 Macro Pad project.
+# ==========================================================
 import time
 import keyboard
 import pyautogui
