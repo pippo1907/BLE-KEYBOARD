@@ -1,13 +1,53 @@
+# ==========================================================
+# Wi-Fi Macro Pad Receiver
+# ==========================================================
+#
+# Description:
+# This script acts as a UDP server that receives commands
+# from an ESP32-based Wi-Fi macro pad and performs desktop
+# automation tasks on a Windows computer.
+#
+# Communication:
+# - Protocol: UDP
+# - Port: 1234
+# - Listens on all network interfaces (0.0.0.0)
+#
+# Button Mapping:
+# 1 -> Take Screenshot
+#      - Saves screenshot with timestamp
+#      - Shows desktop notification
+#
+# 2 -> Split Screen
+#      - Snaps current window to left half
+#      - Selects another window for right half
+#
+# 3 -> Open Blinkit
+#      - Opens Blinkit checkout page
+#
+# 4 -> Show Desktop
+#      - Executes Win + D shortcut
+#
+# Required Libraries:
+# - keyboard
+# - pyautogui
+# - plyer
+#
+# Usage:
+# 1. Connect ESP32 and computer to the same Wi-Fi network.
+# 2. Run this script on the computer.
+# 3. Press buttons on the ESP32 macro pad.
+# 4. Corresponding actions will be executed on the PC.
+#
+# Developed as part of a custom ESP32 Macro Pad project.
+# ==========================================================
 import socket
 import time
 import keyboard
 import pyautogui
 import os
 from datetime import datetime   
-
-
-        
 from plyer import notification
+
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind(("0.0.0.0", 1234))
 
